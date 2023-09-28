@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="DD.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource ColorBackground}">
+
+    <StackLayout>
+        <pancakeview:PancakeView BackgroundColor="{StaticResource ColorPrimary}" Padding="0,34" CornerRadius="0,0,16,16">
+            <StackLayout HorizontalOptions="Fill" Spacing="0">
+                <Label x:Name="WelcomeLabel" HorizontalTextAlignment="Center" TextColor="White" FontSize="32" FontAttributes="Bold"/>
+                <Label x:Name="WelcomeDateLabel" FontSize="18" HorizontalOptions="Fill" HorizontalTextAlignment="Center" TextColor="{StaticResource ColorButton}" FontAttributes="Bold"/>
+            </StackLayout>
+        </pancakeview:PancakeView>
+        <StackLayout x:Name="PageContent" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Button Text="Настройки" x:Name="SettingsButton"/>
+            <Button Text="Мои отчеты" x:Name="MyReviewsButton"/>
+            <Button Text="Отправить отчет" x:Name="SendReviewButton"/>
+            <Button Text="Мой аккаунт" x:Name="AccountButton"/>
+            <Button Text="Войти в систему" x:Name="AuthButton"/>
+        </StackLayout>
+        <StackLayout IsVisible="False" x:Name="LoadingIndicator" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Fill" IsRunning="True" Color="{StaticResource ColorAccent}"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="DD.AccountPage"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <pancakeview:PancakeView BackgroundColor="{StaticResource ColorPrimary}" Padding="0,34" CornerRadius="0,0,16,16">
+                <StackLayout>
+                    <Label TextColor="White" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Привет, " FontSize="32"/>
+                                <Span x:Name="LoginSpan" FontAttributes="Bold" FontSize="32"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label TextColor="{StaticResource ColorButton}" HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Дата регистрации: " FontSize="18"/>
+                                <Span x:Name="RegDateSpan" FontAttributes="Bold" FontSize="18"/>
+                                <Span Text=" в " FontSize="18"/>
+                                <Span x:Name="RegTimeSpan" FontAttributes="Bold" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </pancakeview:PancakeView>
+            
+            <Button Text="Выйти" x:Name="ExitButton"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

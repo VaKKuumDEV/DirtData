@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:models="clr-namespace:DD.Models"
+             x:Class="DD.MyReportsPage"
+             NavigationPage.HasNavigationBar="True"
+             Title="Мои отчеты"
+             BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="ReportsCollection" HorizontalOptions="Fill">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="Fill">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Column="0" HorizontalOptions="Fill" IsVisible="{Binding Key.IsReal}" Padding="4">
+                                <models:SpecialFrame BackgroundColor="White" Padding="4,4,4,16" CornerRadius="4" BorderColor="{StaticResource ColorButton}" ReportId="{Binding Key.Id}">
+                                    <models:SpecialFrame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </models:SpecialFrame.GestureRecognizers>
+
+                                    <StackLayout HorizontalOptions="Fill" Spacing="0">
+                                        <Frame Margin="0" Padding="0" HeightRequest="128" HorizontalOptions="Fill" VerticalOptions="Center" CornerRadius="4" BackgroundColor="{StaticResource ColorPrimary}">
+                                            <forms:CachedImage DownsampleToViewSize="True" Aspect="AspectFill" HeightRequest="128" HorizontalOptions="Fill" Source="{Binding Key.Image.PhotoUrl}" ErrorPlaceholder="icon_image_aqua.png" LoadingPlaceholder="icon_image_aqua.png"/>
+                                        </Frame>
+                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center" Padding="0" Margin="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Отчет " FontSize="14"/>
+                                                    <Span Text="#" FontSize="14" FontAttributes="Bold"/>
+                                                    <Span Text="{Binding Key.Id}" FontSize="14" FontAttributes="Bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center" Padding="0" Margin="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Key.FormatedDate}" FontAttributes="Bold" FontSize="14"/>
+                                                    <Span Text=" в " FontSize="14"/>
+                                                    <Span Text="{Binding Key.FormatedTime}" FontAttributes="Bold" FontSize="14"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </models:SpecialFrame>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1" HorizontalOptions="Fill" IsVisible="{Binding Value.IsReal}" Padding="4">
+                                <models:SpecialFrame BackgroundColor="White" Padding="4,4,4,16" CornerRadius="4" BorderColor="{StaticResource ColorButton}" ReportId="{Binding Value.Id}">
+                                    <models:SpecialFrame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </models:SpecialFrame.GestureRecognizers>
+                                    
+                                    <StackLayout HorizontalOptions="Fill" Spacing="0">
+                                        <Frame Margin="0" Padding="0" HeightRequest="128" HorizontalOptions="Fill" VerticalOptions="Center" CornerRadius="4" BackgroundColor="{StaticResource ColorPrimary}">
+                                            <forms:CachedImage DownsampleToViewSize="True" Aspect="AspectFill" HeightRequest="128" HorizontalOptions="Fill" Source="{Binding Value.Image.PhotoUrl}" ErrorPlaceholder="icon_image_aqua.png" LoadingPlaceholder="icon_image_aqua.png"/>
+                                        </Frame>
+                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center" Padding="0" Margin="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Отчет " FontSize="14"/>
+                                                    <Span Text="#" FontSize="14" FontAttributes="Bold"/>
+                                                    <Span Text="{Binding Value.Id}" FontSize="14" FontAttributes="Bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center" Padding="0" Margin="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Value.FormatedDate}" FontAttributes="Bold" FontSize="14"/>
+                                                    <Span Text=" в " FontSize="14"/>
+                                                    <Span Text="{Binding Value.FormatedTime}" FontAttributes="Bold" FontSize="14"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </models:SpecialFrame>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+                <BindableLayout.EmptyView>
+                    <Label x:Name="EmptyLabel" Text="Вы еще не делали отчеты" HorizontalOptions="Fill" VerticalOptions="Fill" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="32" FontAttributes="Bold"/>
+                </BindableLayout.EmptyView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

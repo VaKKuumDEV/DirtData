@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DD.SettingsPage"
+             BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0" Text="Сервер API:" FontSize="18" Margin="0" HorizontalOptions="Fill" VerticalOptions="Fill" VerticalTextAlignment="Center"/>
+                <Frame Grid.Column="1" BorderColor="{StaticResource ColorAccent}" Padding="1">
+                    <Picker x:Name="ServerPicker" Margin="0" ItemDisplayBinding="{Binding Name}" Title="Сервер API" FontSize="18"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DD.AuthPage"
+             BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Center">
+            <Button Text="Авторизация" x:Name="LoginButton"/>
+            <Button Text="Регистрация" x:Name="RegistrationButton"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

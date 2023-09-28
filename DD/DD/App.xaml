@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DD.App">
+    <Application.Resources>
+        <Color x:Key="ColorPrimaryDark">#08615F</Color>
+        <Color x:Key="ColorPrimary">#0A817F</Color>
+        <Color x:Key="ColorAccent">#959394</Color>
+        <Color x:Key="ColorAccentDisabled">#B3959394</Color>
+        <Color x:Key="ColorControlHighlight">#aeaaa9</Color>
+        <Color x:Key="ColorControlNormal">#64615a</Color>
+        <Color x:Key="ColorButton">#363231</Color>
+        <Color x:Key="ColorButtonDisabled">#B3363231</Color>
+        <Color x:Key="ColorBackground">#f0e7ec</Color>
+
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Padding" Value="4"></Setter>
+            <Setter Property="CornerRadius" Value="4"></Setter>
+            <Setter Property="TextTransform" Value="Uppercase"></Setter>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource ColorButton}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource ColorButtonDisabled}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource ColorButton}"/>
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource ColorButton}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource ColorAccent}"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource ColorButton}"/>
+            <Setter Property="TitleColor" Value="{StaticResource ColorAccent}"/>
+        </Style>
+
+        <Style TargetType="SearchBar">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="{StaticResource ColorButton}"/>
+            <Setter Property="PlaceholderColor" Value="{StaticResource ColorAccent}"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Application.Resources>
+</Application>

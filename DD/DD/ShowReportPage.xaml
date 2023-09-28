@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="DD.ShowReportPage"
+             BackgroundColor="{StaticResource ColorBackground}"
+             NavigationPage.HasNavigationBar="True"
+             Title="Просмотр отчета">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Fill" Spacing="0">
+            <CollectionView x:Name="CategoriesCollection" HorizontalOptions="Fill" Margin="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HorizontalOptions="Fill" VerticalOptions="StartAndExpand">
+                            <Frame Padding="1" Margin="4,0" BackgroundColor="Transparent" CornerRadius="0" BorderColor="{StaticResource ColorButton}">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Level}" Value="0">
+                                        <Setter Property="BorderColor" Value="{StaticResource ColorAccent}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Level}" Value="1">
+                                        <Setter Property="BorderColor" Value="{StaticResource ColorPrimary}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding Level}" Value="2">
+                                        <Setter Property="BorderColor" Value="{StaticResource ColorPrimaryDark}"/>
+                                    </DataTrigger>
+                                </Frame.Triggers>
+
+                                <Label Text="{Binding Label}" FontSize="14"/>
+                            </Frame>
+
+                            <StackLayout IsVisible="{Binding HasChildren}" BindableLayout.ItemsSource="{Binding Children}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalOptions="Fill">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackLayout Grid.Column="0" IsVisible="{Binding Key.IsReal}" BackgroundColor="Transparent" Padding="4">
+                                                <Frame BackgroundColor="White" Padding="2,16,2,2" CornerRadius="4" BorderColor="{StaticResource ColorButton}">
+                                                    <StackLayout HorizontalOptions="Fill" Spacing="0">
+                                                        <Label Text="{Binding Key.OriginalLabel}" FontAttributes="Bold" HeightRequest="70" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="Fill" HorizontalTextAlignment="Start"/>
+                                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Значение: " FontSize="14"/>
+                                                                    <Span Text="{Binding Key.Value}" FontSize="14" FontAttributes="Bold"/>
+                                                                    <Span Text="%" FontSize="14" FontAttributes="Bold"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="1" IsVisible="{Binding Value.IsReal}" BackgroundColor="Transparent" Padding="4">
+                                                <Frame BackgroundColor="White" Padding="2,16,2,2" CornerRadius="4" BorderColor="{StaticResource ColorButton}">
+                                                    <StackLayout HorizontalOptions="Fill" Spacing="0">
+                                                        <Label Text="{Binding Value.OriginalLabel}" FontAttributes="Bold" HeightRequest="70" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="Fill" HorizontalTextAlignment="Start"/>
+                                                        <Label HorizontalOptions="Fill" HorizontalTextAlignment="Center">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Значение: " FontSize="14"/>
+                                                                    <Span Text="{Binding Value.Value}" FontSize="14" FontAttributes="Bold"/>
+                                                                    <Span Text="%" FontSize="14" FontAttributes="Bold"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Header>
+                    <StackLayout HorizontalOptions="Fill">
+                        <Frame HorizontalOptions="Fill" Padding="0,0,0,16" BackgroundColor="Transparent">
+                            <pancakeview:PancakeView BackgroundColor="{StaticResource ColorPrimary}" Padding="0,34" CornerRadius="0,0,16,16">
+                                <StackLayout HorizontalOptions="Fill" Spacing="0">
+                                    <Label x:Name="LocationNameLabel" Text="Локация" FontSize="32" FontAttributes="Bold" HorizontalOptions="Fill" HorizontalTextAlignment="Center" TextColor="White"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="Fill" VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Широта: " FontSize="18" TextColor="White"/>
+                                                        <Span x:Name="LatitudeSpan" Text="NaN" FontAttributes="Bold" FontSize="18" TextColor="White"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Grid.Column="1" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="Fill" VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Долгота: " FontSize="18" TextColor="White"/>
+                                                        <Span x:Name="LongitudeSpan" Text="NaN" FontAttributes="Bold" FontSize="18" TextColor="White"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </StackLayout>
+                            </pancakeview:PancakeView>
+                        </Frame>
+
+                        <Frame HorizontalOptions="Fill" Padding="0,0,0,16" BackgroundColor="Transparent">
+                            <CollectionView x:Name="ImagesCollection" HorizontalOptions="Fill" HeightRequest="256" HorizontalScrollBarVisibility="Never" ItemsLayout="HorizontalGrid, 1" SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Margin="0" Padding="0" HeightRequest="256" HorizontalOptions="Fill" VerticalOptions="Center" CornerRadius="4" BackgroundColor="{StaticResource ColorPrimary}">
+                                            <forms:CachedImage DownsampleToViewSize="True" Aspect="Fill" HeightRequest="256" HorizontalOptions="Fill" Source="{Binding PhotoUrl}" ErrorPlaceholder="icon_image_aqua.png" LoadingPlaceholder="icon_image_aqua.png"/>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Frame>
+
+                        <Frame HorizontalOptions="Fill" Padding="4,4,4,16" BackgroundColor="Transparent">
+                            <Frame HorizontalOptions="Fill" Padding="0" Margin="0" BackgroundColor="White" BorderColor="{StaticResource ColorButton}">
+                                <SearchBar x:Name="SearchBarEntry" Placeholder="Название элемента" HorizontalOptions="Fill"/>
+                            </Frame>
+                        </Frame>
+                    </StackLayout>
+                </CollectionView.Header>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

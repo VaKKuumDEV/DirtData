@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DD.RegistrationPage"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundColor="{StaticResource ColorBackground}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+            <Frame BorderColor="{StaticResource ColorAccent}" Padding="1">
+                <Entry Placeholder="Логин" FontSize="14" x:Name="LoginEntry" Margin="0"/>
+            </Frame>
+            <Frame BorderColor="{StaticResource ColorAccent}" Padding="1">
+                <Entry Placeholder="Пароль" FontSize="14" x:Name="PasswordEntry" IsPassword="True" Margin="0"/>
+            </Frame>
+            <Frame BorderColor="{StaticResource ColorAccent}" Padding="1">
+                <Entry Placeholder="Повтор пароля" FontSize="14" x:Name="PasswordConfirmEntry" IsPassword="True" Margin="0"/>
+            </Frame>
+            <Button Text="Зарегистрироваться" x:Name="RegisterButton"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
