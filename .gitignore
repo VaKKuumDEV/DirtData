@@ -362,5 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-keystore.keystore
-.сборки андроид/
+/keystore.keystore
+/сборки*андроид/
